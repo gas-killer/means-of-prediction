@@ -255,7 +255,7 @@ export function CreatePage() {
                     data-testid={`category-${c}`}
                     onClick={() => setCategory((cur) => (cur === c ? null : c))}
                     className={`border-2 px-2.5 py-1 text-sm font-bold ${
-                      category === c ? "border-core-orange bg-[#FBDED1]" : "border-surface-ink bg-paper-0"
+                      category === c ? "border-core-orange bg-[#0b2a1f]" : "border-surface-ink bg-paper-0"
                     }`}
                   >
                     {c}
@@ -281,7 +281,7 @@ export function CreatePage() {
                       data-testid={`newspaper-${n.dkimDomain}`}
                       onClick={() => toggleNewspaper(i)}
                       className={`border-2 p-2 text-left ${
-                        on ? "border-core-orange bg-[#FBDED1]" : "border-surface-ink bg-paper-0"
+                        on ? "border-core-orange bg-[#0b2a1f]" : "border-surface-ink bg-paper-0"
                       }`}
                     >
                       <div className="flex items-center gap-1 font-bold">
@@ -335,7 +335,7 @@ export function CreatePage() {
                 max={Math.max(1, sources.length)}
                 value={threshold}
                 onChange={(e) => setThreshold(Number(e.target.value))}
-                className="w-full accent-[#EA5817]"
+                className="w-full accent-[#34d399]"
               />
               <p className="text-caption text-surface-grey-2">
                 Requiring 2+ independent newspapers makes a single compromised sender insufficient to settle.
@@ -558,7 +558,7 @@ export function CreatePage() {
                 step={5}
                 value={startYes}
                 onChange={(e) => setStartYes(Number(e.target.value))}
-                className="w-full accent-[#EA5817]"
+                className="w-full accent-[#34d399]"
               />
             </div>
 

@@ -55,7 +55,7 @@ export function KeywordBuilder({
           {phrases.map((p, i) => (
             <li
               key={i}
-              className="flex items-center gap-1.5 border-2 border-surface-ink bg-[#FBDED1] px-2 py-1 text-sm font-bold"
+              className="flex items-center gap-1.5 border-2 border-surface-ink bg-[#0b2a1f] px-2 py-1 text-sm font-bold"
             >
               {p}
               <button
@@ -82,7 +82,7 @@ function Button({ onClick }: { onClick: () => void }) {
     <button
       data-testid="keyword-add"
       onClick={onClick}
-      className="flex items-center gap-1 border-2 border-surface-ink bg-core-orange px-3 py-2 text-sm font-bold text-white shadow-[0.125rem_0.125rem_0px_0px_#595959] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+      className="flex items-center gap-1 border-2 border-surface-ink bg-core-orange px-3 py-2 text-sm font-bold text-white shadow-[0.125rem_0.125rem_0px_0px_#1b1b21] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
     >
       <Plus size={14} weight="bold" /> Add
     </button>

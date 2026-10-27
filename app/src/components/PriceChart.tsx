@@ -5,10 +5,10 @@ import type { PricePoint } from "../hooks/usePriceHistory";
 // the header names it), 2px line in the YES entity green, 10%-opacity area wash,
 // hairline solid gridlines, muted text tokens for all labels, ≥8px end marker with a
 // 2px surface ring, crosshair + tooltip hover layer, range filter tabs above.
-const GREEN = "#32a800"; // validated vs paper surface (all six checks pass)
-const SURFACE = "#fdfcf9";
-const GRID = "#eae2d6"; // paper-2, one step off surface
-const INK_MUTED = "#808080";
+const GREEN = "#34d399"; // validated vs paper surface (all six checks pass)
+const SURFACE = "#111114";
+const GRID = "#26262c"; // paper-2, one step off surface
+const INK_MUTED = "#71717a";
 
 const RANGES: { label: string; seconds: number | null }[] = [
   { label: "1H", seconds: 3600 },

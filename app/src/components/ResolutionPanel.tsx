@@ -131,7 +131,7 @@ export function ResolutionPanel({ m }: { m: MarketData }) {
       </ul>
 
       {m.resolution === Resolution.Yes && (
-        <div className="border-2 border-system-green bg-[#eaf7e4] p-3 font-bold text-system-green">
+        <div className="border-2 border-system-green bg-[#0b2a1f] p-3 font-bold text-system-green">
           Resolved YES — threshold reached.
         </div>
       )}

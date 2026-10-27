@@ -54,6 +54,7 @@ export function Header() {
     <header className="mp-site-header">
       <div className="mp-header-inner">
         <Link to="/" className="mp-brand"><span className="mp-brand-mark" aria-hidden="true">↗</span>Means of Prediction</Link>
+        <a href="https://gaskiller.xyz" className="mp-gk-chip" target="_blank" rel="noreferrer"><i aria-hidden="true" />A Gas Killer demo</a>
         <nav className="mp-site-nav" aria-label="Main navigation">
           <NavLink to="/markets" className={navClass}>
             Markets
@@ -76,7 +77,7 @@ export function Header() {
             <select
               aria-label="Network"
               data-testid="network-switcher"
-              className="border-2 border-surface-ink bg-paper-0 px-2 py-1.5 text-sm font-bold uppercase shadow-[0.125rem_0.125rem_0px_0px_#595959]"
+              className="border-2 border-surface-ink bg-paper-0 px-2 py-1.5 text-sm font-bold uppercase shadow-[0.125rem_0.125rem_0px_0px_#1b1b21]"
               value={NETWORK}
               onChange={(e) => setNetwork(e.target.value as typeof NETWORK)}
             >
@@ -106,7 +107,7 @@ export function Header() {
               <select
                 aria-label="Dev account"
                 data-testid="account-switcher"
-                className="border-2 border-surface-ink bg-paper-0 px-2 py-1.5 text-sm font-bold shadow-[0.125rem_0.125rem_0px_0px_#595959]"
+                className="border-2 border-surface-ink bg-paper-0 px-2 py-1.5 text-sm font-bold shadow-[0.125rem_0.125rem_0px_0px_#1b1b21]"
                 value={wallet.accountIndex}
                 onChange={(e) => wallet.setAccountIndex(Number(e.target.value))}
               >
@@ -122,7 +123,7 @@ export function Header() {
               href={EXPLORER_URL ? `${EXPLORER_URL}/address/${wallet.address}` : "#"}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 border-2 border-surface-ink bg-paper-0 px-3 py-1.5 text-sm font-bold shadow-[0.125rem_0.125rem_0px_0px_#595959]"
+              className="flex items-center gap-2 border-2 border-surface-ink bg-paper-0 px-3 py-1.5 text-sm font-bold shadow-[0.125rem_0.125rem_0px_0px_#1b1b21]"
             >
               <span className="h-2 w-2 rounded-full bg-system-green" /> {wallet.accountName}
             </a>

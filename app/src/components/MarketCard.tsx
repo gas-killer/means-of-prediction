@@ -44,7 +44,7 @@ export function MarketCard({ m }: { m: MarketData }) {
         </div>
 
         <div className="mb-3 flex gap-2">
-          <div className="flex-1 border-2 border-system-green bg-[#eaf7e4] px-2 py-1.5 text-center">
+          <div className="flex-1 border-2 border-system-green bg-[#0b2a1f] px-2 py-1.5 text-center">
             <span className="text-sm font-black text-system-green">Yes {noLiquidity ? "—" : fmtCents(m.priceYes)}</span>
           </div>
           <div className="flex-1 border-2 border-system-red bg-red-0 px-2 py-1.5 text-center">

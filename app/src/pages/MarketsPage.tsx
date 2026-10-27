@@ -66,7 +66,7 @@ export function MarketsPage() {
             data-testid={`cat-${c}`}
             onClick={() => setCat(c as Category | "all")}
             className={`border-2 px-2.5 py-1 text-sm font-bold uppercase ${
-              cat === c ? "border-core-orange bg-[#FBDED1] text-core-orange" : "border-surface-ink bg-paper-0"
+              cat === c ? "border-core-orange bg-[#0b2a1f] text-core-orange" : "border-surface-ink bg-paper-0"
             }`}
           >
             {c === "all" ? "All" : c}

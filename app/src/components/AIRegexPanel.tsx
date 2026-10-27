@@ -91,7 +91,7 @@ export function AIRegexPanel({
           <button
             aria-label="Add example"
             onClick={addExample}
-            className="border-2 border-surface-ink bg-paper-0 px-3 shadow-[0.125rem_0.125rem_0px_0px_#595959]"
+            className="border-2 border-surface-ink bg-paper-0 px-3 shadow-[0.125rem_0.125rem_0px_0px_#1b1b21]"
           >
             <Plus size={16} weight="bold" />
           </button>
