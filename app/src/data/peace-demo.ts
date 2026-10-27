@@ -45,9 +45,9 @@ export const PEACE_DEMO = {
     },
   ],
   predicates: [
-    { title: "A named individual", detail: "The recorded reports identify Navi Pillay as a person." },
-    { title: "Awarded, not merely nominated", detail: "The excerpts describe a winner or laureate." },
+    { title: "A named individual", detail: "The reports name Navi Pillay." },
+    { title: "Awarded, not merely nominated", detail: "The excerpts describe a winner." },
     { title: "The right award and year", detail: "All four excerpts name the 2026 Nobel Peace Prize." },
-    { title: "Credible-reporting fallback", detail: "The replay evaluated agreement across BBC, CNN, ABC and RFI." },
+    { title: "Credible-reporting fallback", detail: "BBC, CNN, ABC and RFI agree." },
   ],
 } as const;

@@ -1,7 +1,7 @@
-# Static GitHub Pages deploy of the frontend, indexing the etherform Gnosis deployment.
-# The build reads addresses + ABIs from contracts/deployments/gnosis.json (written by
-# script/DeployGnosis.s.sol / etherform) and bakes them into a static bundle — no
-# backend, HashRouter routing, connects an injected wallet to Gnosis (chain 100).
+# Static GitHub Pages deploy of the frontend, indexing the Sepolia deployment.
+# The build reads addresses + ABIs from contracts/deployments/sepolia.json and bakes
+# them into a static bundle: no backend, HashRouter routing, connects an injected
+# wallet to Sepolia (chain 11155111).
 name: Pages
 on:
   push:
@@ -54,10 +54,10 @@ jobs:
         working-directory: app
         run: pnpm test:compute-demos
 
-      - name: Build the static site (Gnosis deployment)
+      - name: Build the static site (Sepolia deployment)
         working-directory: app
         env:
-          DEPLOYMENT: gnosis
+          DEPLOYMENT: sepolia
           VITE_BASE: /${{ github.event.repository.name }}/
         run: pnpm build
 

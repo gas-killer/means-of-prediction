@@ -16,7 +16,8 @@ const out = (name) =>
 
 // DEPLOYMENT=gnosis|sepolia|local (default local) picks the app's default network.
 const defaultNetwork = process.env.DEPLOYMENT ?? "local";
-const REAL_NETWORKS = ["gnosis", "sepolia"];
+// The Gas Killer fork serves Sepolia only; gnosis.json stays for reference.
+const REAL_NETWORKS = ["sepolia"];
 
 const deployments = {};
 for (const network of [...new Set([defaultNetwork, ...REAL_NETWORKS])]) {

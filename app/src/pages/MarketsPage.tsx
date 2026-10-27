@@ -6,6 +6,7 @@ import { MarketCardSkeleton } from "../components/Skeleton";
 import { Resolution, useMarkets } from "../hooks/useMarkets";
 import { CHAIN_LABEL, IS_LOCAL } from "../config";
 import { PEACE_DEMO } from "../data/peace-demo";
+import { FEATURED_MARKET_IDS } from "../data/featured-markets";
 import { ArrowRight } from "@phosphor-icons/react";
 
 type Sort = "newest" | "volume" | "liquidity" | "ending";
@@ -19,7 +20,7 @@ export function MarketsPage() {
 
   const shown = useMemo(() => {
     if (!markets) return [];
-    let list = [...markets];
+    let list = IS_LOCAL ? [...markets] : markets.filter((m) => FEATURED_MARKET_IDS.has(m.id));
     if (filter === "live") list = list.filter((m) => m.resolution === Resolution.Unresolved);
     if (filter === "resolved") list = list.filter((m) => m.resolution !== Resolution.Unresolved);
     if (q.trim()) {
@@ -45,9 +46,8 @@ export function MarketsPage() {
         <div>
           <Heading1>Markets</Heading1>
           <p className="max-w-2xl text-body text-surface-grey-2">
-            These markets are live on Gnosis. Each one names the newspapers that can settle it and
-            the headline pattern that counts as YES, and anyone can settle it by submitting a matching
-            signed alert email. <Link to="/" className="font-semibold text-core-orange underline">How it works →</Link>
+            Live on Sepolia. Each market names the newspapers that can settle it and the headline
+            pattern that counts as YES. Anyone can settle it with a matching signed alert email. <Link to="/" className="font-semibold text-core-orange underline">How it works →</Link>
           </p>
         </div>
         <Link to="/create">

@@ -67,9 +67,9 @@ function ComputeDemoCard({ demo }: { demo: Demo }) {
             <span>{status}</span>
           </div>
           {checking ? (
-            <p className="mt-2 text-sm text-surface-grey-2">Reading the receipt, contract output and verification checks from Sepolia.</p>
+            <p className="mt-2 text-sm text-surface-grey-2">Reading the receipt and contract output from Sepolia.</p>
           ) : !live ? (
-            <p className="mt-2 text-sm text-surface-grey-2">The current check could not complete. The dated recorded result remains available below; recheck to verify it again.</p>
+            <p className="mt-2 text-sm text-surface-grey-2">The check could not complete. The recorded result is below; recheck to try again.</p>
           ) : (
             <>
               <p className="mt-2 text-caption text-surface-grey-2">
@@ -87,7 +87,7 @@ function ComputeDemoCard({ demo }: { demo: Demo }) {
                 {matches ? <CheckCircle size={16} aria-hidden="true" /> : <WarningCircle size={16} aria-hidden="true" />}
                 {matches ? "Matches the expected output hash" : "Does not match the expected output hash"}
               </p>
-              {!live.verified && <p className="mt-2 text-sm">At least one verification check failed. Inspect the checklist below before relying on this result.</p>}
+              {!live.verified && <p className="mt-2 text-sm">A verification check failed. See the checklist below before relying on this result.</p>}
             </>
           )}
         </section>
@@ -107,9 +107,9 @@ function ComputeDemoCard({ demo }: { demo: Demo }) {
           <code className="mt-1 block break-all border-2 border-surface-ink bg-paper-0 p-2 text-xs">{demo.expectedOutputHash}</code>
           <ol className="mt-5 space-y-4" aria-label="Recorded demo timeline">
             {[
-              ["Prepared", "Fixed input and weights were committed before execution."],
-              ["Operator certificate", "Gas Killer operators attested to the calculated output."],
-              ["Public Sepolia receipt", "The contract accepted the certificate and stored the output hash."],
+              ["Prepared", "Input and weights committed before execution."],
+              ["Operator certificate", "Gas Killer's operators signed the output."],
+              ["Public Sepolia receipt", "The contract verified the signature and stored the output hash."],
             ].map(([title, description], index) => (
               <li key={title} className="flex gap-3 text-sm">
                 <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center border-2 border-surface-ink bg-paper-0 font-bold">{index + 1}</span>
@@ -121,7 +121,7 @@ function ComputeDemoCard({ demo }: { demo: Demo }) {
       </div>
 
       <div className="border-t-2 border-surface-ink p-4 sm:p-6">
-        <p className="text-sm"><b>What this demonstrates:</b> one arithmetic component: 32 of 3,072 layer-0 outputs from a fixed initial token. Full-model execution and prediction-market settlement are still unfinished. The certificate is an operator attestation; it does not prove the truth of news.</p>
+        <p className="text-sm"><b>What this shows:</b> 32 of 3,072 layer-0 outputs from a fixed initial token. Full-model execution and market settlement are unfinished. The certificate attests to execution, not to the truth of any news.</p>
         <details className="mt-4 border-t-2 border-surface-ink pt-3" data-testid="compute-demo-details">
           <summary className="cursor-pointer font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Verification checks and pinned inputs</summary>
           <div className="mt-4 grid gap-5 lg:grid-cols-2">
@@ -154,7 +154,7 @@ export function ComputeDemosPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <Heading1>Compute demos</Heading1>
-      <p className="mb-6 mt-2 max-w-3xl text-body text-surface-grey-2">Laya is the language model that will judge markets, written in Solidity so a contract can check its output. Running it as a normal transaction would cost too much gas, so Gas Killer's operators run it off-chain and sign the result, and the contract verifies the signature. This page checks the first piece to run that way: Laya's layer-0 attention projections, 32 output values, recorded on Sepolia. The check is read-only and needs no wallet, even if your market network is Gnosis.</p>
+      <p className="mb-6 mt-2 max-w-3xl text-body text-surface-grey-2">Laya is the language model that will judge markets, written in Solidity so its output is verifiable onchain. It costs too much gas to run in a normal transaction, so Gas Killer's operators run it off-chain and sign the result for the contract to verify. This page re-verifies the first piece run that way: 32 layer-0 attention outputs, recorded on Sepolia. No wallet needed.</p>
       <div className="space-y-6">{COMPUTE_DEMOS.map(demo => <ComputeDemoCard key={demo.id} demo={demo} />)}</div>
     </div>
   );
