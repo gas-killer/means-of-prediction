@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DEPLOY_BLOCK } from "../config";
+import { TRADES_FROM_BLOCK } from "../config";
 import { Link } from "react-router-dom";
 import { Button, Heading1 } from "@breadcoop/ui";
 import { useQueries } from "@tanstack/react-query";
@@ -58,8 +58,8 @@ export function PortfolioPage() {
 
         // the user's own trades -> average entry + net cost per outcome
         const [myBuys, mySells] = await Promise.all([
-          publicClient.getLogs({ address: m.fpmm, event: buyEvt, args: { buyer: wallet.address }, fromBlock: DEPLOY_BLOCK }),
-          publicClient.getLogs({ address: m.fpmm, event: sellEvt, args: { seller: wallet.address }, fromBlock: DEPLOY_BLOCK }),
+          publicClient.getLogs({ address: m.fpmm, event: buyEvt, args: { buyer: wallet.address }, fromBlock: TRADES_FROM_BLOCK }),
+          publicClient.getLogs({ address: m.fpmm, event: sellEvt, args: { seller: wallet.address }, fromBlock: TRADES_FROM_BLOCK }),
         ]);
         const boughtShares: [bigint, bigint] = [0n, 0n];
         const boughtCost: [bigint, bigint] = [0n, 0n];

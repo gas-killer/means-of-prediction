@@ -52,6 +52,7 @@ export const deployment = deployments[NETWORK as keyof typeof deployments] as {
   verifier: string;
   multicall3: string;
   deployBlock?: number;
+  tradesFromBlock?: number;
 };
 
 export const CHAIN_ID = deployment.chainId as number;
@@ -61,6 +62,10 @@ export const IS_TESTNET = CHAIN_ID === 11155111;
 
 /** First block to scan for our contracts' logs (0 where the deployment predates the field). */
 export const DEPLOY_BLOCK = BigInt(deployment.deployBlock ?? 0);
+
+/** First block to scan for FPMM trade and funding logs. Set where no pool held liquidity
+ *  before a later block, so scans stay inside the history public RPCs still serve. */
+export const TRADES_FROM_BLOCK = BigInt(deployment.tradesFromBlock ?? deployment.deployBlock ?? 0);
 
 const DEFAULT_RPCS: Record<number, string> = {
   31337: "http://localhost:8547",

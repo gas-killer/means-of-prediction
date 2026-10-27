@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { Address, Hex } from "viem";
 import { parseAbiItem } from "viem";
 import { abis } from "../contracts/gen";
-import { deployment, DEPLOY_BLOCK } from "../config";
+import { deployment, TRADES_FROM_BLOCK } from "../config";
 import { publicClient } from "../lib/wallet";
 import { readPoolFeeConfiguration, readProtocolFeeConfiguration } from "../lib/fees";
 
@@ -192,8 +192,8 @@ async function fetchMarket(id: number, market: Address, fpmm: Address, chainNow:
     lpSupply === 0n && pool[0] === 0n && pool[1] === 0n
       ? [[], []]
       : await Promise.all([
-          publicClient.getLogs({ address: fpmm, event: buyEvent, fromBlock: DEPLOY_BLOCK }),
-          publicClient.getLogs({ address: fpmm, event: sellEvent, fromBlock: DEPLOY_BLOCK }),
+          publicClient.getLogs({ address: fpmm, event: buyEvent, fromBlock: TRADES_FROM_BLOCK }),
+          publicClient.getLogs({ address: fpmm, event: sellEvent, fromBlock: TRADES_FROM_BLOCK }),
         ]);
   const volume =
     buys.reduce((a, l) => a + (l.args.investmentAmount ?? 0n), 0n) +

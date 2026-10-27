@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { DEPLOY_BLOCK } from "../config";
+import { TRADES_FROM_BLOCK } from "../config";
 import { parseAbiItem, type Address } from "viem";
 import { abis } from "../contracts/gen";
 import { publicClient } from "../lib/wallet";
@@ -43,9 +43,9 @@ export function usePriceHistory(m?: MarketData) {
     queryFn: async () => {
       if (!m) throw new Error("no market");
       const [buys, sells, fundings] = await Promise.all([
-        publicClient.getLogs({ address: m.fpmm, event: buyEvent, fromBlock: DEPLOY_BLOCK }),
-        publicClient.getLogs({ address: m.fpmm, event: sellEvent, fromBlock: DEPLOY_BLOCK }),
-        publicClient.getLogs({ address: m.fpmm, event: fundingEvent, fromBlock: DEPLOY_BLOCK }),
+        publicClient.getLogs({ address: m.fpmm, event: buyEvent, fromBlock: TRADES_FROM_BLOCK }),
+        publicClient.getLogs({ address: m.fpmm, event: sellEvent, fromBlock: TRADES_FROM_BLOCK }),
+        publicClient.getLogs({ address: m.fpmm, event: fundingEvent, fromBlock: TRADES_FROM_BLOCK }),
       ]);
       const blocks = [...new Set([...buys, ...sells, ...fundings].map((l) => l.blockNumber))].sort((a, b) =>
         a < b ? -1 : 1,
