@@ -9,7 +9,7 @@ import { tokensForChain, type TokenInfo } from "../data/tokens";
 import { CHAIN_ID } from "../config";
 import { KeywordBuilder, phrasesToRegex, regexToPhrases } from "../components/KeywordBuilder";
 import { AIRegexPanel } from "../components/AIRegexPanel";
-import { CATEGORIES, withCategoryTag, type Category } from "../data/categories";
+import { withCategoryTag } from "../data/categories";
 import { ContentField, FACTORY, USDC, useCash, useFactoryFees } from "../hooks/useMarkets";
 import { formatFeePercent, parseFeePercent, validateTradingFees } from "../lib/fees";
 import { parseAmount } from "../lib/format";
@@ -36,7 +36,6 @@ export function CreatePage() {
   const [step, setStep] = useState(0);
   const [question, setQuestion] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState<Category | null>(null);
   const [sources, setSources] = useState<SourceDraft[]>([
     { ...NEWSPAPERS[0], contentRegex: "" },
     { ...NEWSPAPERS[1], contentRegex: "" },
@@ -155,7 +154,7 @@ export function CreatePage() {
               ` dated before the deadline. Settled permissionlessly by a real DKIM signature verified onchain;` +
               ` resolves NO` +
               ` ${bufferHours}h after the deadline if the threshold is not met.`,
-          category,
+          null,
         ),
         contentRegex,
         contentField,
@@ -245,23 +244,6 @@ export function CreatePage() {
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full border-2 border-surface-ink bg-paper-0 px-3 py-2 outline-none focus:border-core-orange"
               />
-            </div>
-            <div>
-              <label className="text-caption font-bold uppercase text-surface-grey-2">Category (optional)</label>
-              <div className="mt-1 flex flex-wrap gap-1.5" data-testid="create-category">
-                {CATEGORIES.map((c) => (
-                  <button
-                    key={c}
-                    data-testid={`category-${c}`}
-                    onClick={() => setCategory((cur) => (cur === c ? null : c))}
-                    className={`border-2 px-2.5 py-1 text-sm font-bold ${
-                      category === c ? "border-core-orange bg-[#0b2a1f]" : "border-surface-ink bg-paper-0"
-                    }`}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         )}

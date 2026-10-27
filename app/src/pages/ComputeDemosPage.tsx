@@ -154,7 +154,7 @@ export function ComputeDemosPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <Heading1>Compute demos</Heading1>
-      <p className="mb-6 mt-2 max-w-3xl text-body text-surface-grey-2">Inspect a model calculation recorded on Sepolia. Verification is read-only, always uses Sepolia, and needs no wallet—even if your market network is Gnosis.</p>
+      <p className="mb-6 mt-2 max-w-3xl text-body text-surface-grey-2">Laya is the language model that will judge markets, written in Solidity so a contract can check its output. Running it as a normal transaction would cost too much gas, so Gas Killer's operators run it off-chain and sign the result, and the contract verifies the signature. This page checks the first piece to run that way: Laya's layer-0 attention projections, 32 output values, recorded on Sepolia. The check is read-only and needs no wallet, even if your market network is Gnosis.</p>
       <div className="space-y-6">{COMPUTE_DEMOS.map(demo => <ComputeDemoCard key={demo.id} demo={demo} />)}</div>
     </div>
   );

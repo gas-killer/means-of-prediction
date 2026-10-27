@@ -4,7 +4,6 @@ import { Button, Heading1 } from "@breadcoop/ui";
 import { MarketCard } from "../components/MarketCard";
 import { MarketCardSkeleton } from "../components/Skeleton";
 import { Resolution, useMarkets } from "../hooks/useMarkets";
-import { CATEGORIES, parseCategory, type Category } from "../data/categories";
 import { CHAIN_LABEL, IS_LOCAL } from "../config";
 import { PEACE_DEMO } from "../data/peace-demo";
 import { ArrowRight } from "@phosphor-icons/react";
@@ -16,7 +15,6 @@ export function MarketsPage() {
   const { data: markets, isLoading, error } = useMarkets();
   const [sort, setSort] = useState<Sort>("newest");
   const [filter, setFilter] = useState<Filter>("all");
-  const [cat, setCat] = useState<Category | "all">("all");
   const [q, setQ] = useState("");
 
   const shown = useMemo(() => {
@@ -24,7 +22,6 @@ export function MarketsPage() {
     let list = [...markets];
     if (filter === "live") list = list.filter((m) => m.resolution === Resolution.Unresolved);
     if (filter === "resolved") list = list.filter((m) => m.resolution !== Resolution.Unresolved);
-    if (cat !== "all") list = list.filter((m) => parseCategory(m.description) === cat);
     if (q.trim()) {
       const needle = q.toLowerCase();
       list = list.filter(
@@ -40,7 +37,7 @@ export function MarketsPage() {
       ending: (a, b) => Number(a.deadline - b.deadline),
     };
     return list.sort(cmp[sort]);
-  }, [markets, sort, filter, cat, q]);
+  }, [markets, sort, filter, q]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
@@ -48,8 +45,9 @@ export function MarketsPage() {
         <div>
           <Heading1>Markets</Heading1>
           <p className="max-w-2xl text-body text-surface-grey-2">
-            Explore the recorded evidence replay or browse existing on-chain markets.
-            Start a new question with rules drafted inside the product. <Link to="/" className="font-semibold text-core-orange underline">How it works →</Link>
+            These markets are live on Gnosis. Each one names the newspapers that can settle it and
+            the headline pattern that counts as YES, and anyone can settle it by submitting a matching
+            signed alert email. <Link to="/" className="font-semibold text-core-orange underline">How it works →</Link>
           </p>
         </div>
         <Link to="/create/ai">
@@ -58,21 +56,6 @@ export function MarketsPage() {
       </div>
 
       <div className="mp-product"><Link to="/demo/peace-2026" className="mp-index-demo" data-testid="peace-replay-card"><div><span className="mp-eyebrow">Featured historical local replay</span><h2>{PEACE_DEMO.question}</h2><p>Four reporting sources · imported Polymarket rules · no public market settlement</p></div><div><strong>Resolved YES</strong><span className="mp-text-link">Inspect evidence <ArrowRight size={16} aria-hidden="true" /></span></div></Link><p className="mb-6 text-sm text-surface-grey-2">Looking for the public computation receipt? <Link to="/demos" className="mp-inline-link">View the separate Sepolia component →</Link></p></div>
-
-      <div className="mb-3 flex flex-wrap gap-1.5" data-testid="category-tabs">
-        {(["all", ...CATEGORIES] as const).map((c) => (
-          <button
-            key={c}
-            data-testid={`cat-${c}`}
-            onClick={() => setCat(c as Category | "all")}
-            className={`border-2 px-2.5 py-1 text-sm font-bold uppercase ${
-              cat === c ? "border-core-orange bg-[#0b2a1f] text-core-orange" : "border-surface-ink bg-paper-0"
-            }`}
-          >
-            {c === "all" ? "All" : c}
-          </button>
-        ))}
-      </div>
 
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <input
