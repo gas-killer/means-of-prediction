@@ -11,7 +11,6 @@ import { MarketsPage } from "./pages/MarketsPage";
 import { PortfolioPage } from "./pages/PortfolioPage";
 import { ComputeDemosPage } from "./pages/ComputeDemosPage";
 import { PeaceDemoPage } from "./pages/PeaceDemoPage";
-import { RuleStudioPage } from "./pages/RuleStudioPage";
 import "./product.css";
 
 const queryClient = new QueryClient({
@@ -40,12 +39,11 @@ export default function App() {
               <Route path="/markets" element={<Page><MarketsPage /></Page>} />
               <Route path="/market/:id" element={<Page><MarketPage /></Page>} />
               <Route path="/create" element={<Page><CreatePage /></Page>} />
-              <Route path="/create/ai" element={<Page><RuleStudioPage /></Page>} />
               <Route path="/portfolio" element={<Page><PortfolioPage /></Page>} />
               <Route path="/demos" element={<Page><ComputeDemosPage /></Page>} />
               <Route path="/demo/peace-2026" element={<Page><PeaceDemoPage /></Page>} />
             </Routes>
-            <footer className="mp-footer"><div className="mp-footer-inner"><p><strong>Means of Prediction</strong>Rules you can read. Evidence you can inspect.</p><nav className="mp-footer-links" aria-label="Footer navigation"><Link to="/create/ai">Draft with DeepSeek</Link><Link to="/demo/peace-2026">Historical replay</Link><Link to="/demos">Sepolia component</Link><Link to="/create">On-chain markets</Link><a href="https://gaskiller.xyz">Gas Killer</a></nav></div></footer>
+            <footer className="mp-footer"><div className="mp-footer-inner"><p><strong>Means of Prediction</strong>Rules you can read. Evidence you can inspect.</p><nav className="mp-footer-links" aria-label="Footer navigation"><Link to="/markets">Markets</Link><Link to="/demo/peace-2026">Historical replay</Link><Link to="/demos">Sepolia component</Link><Link to="/create">Create a market</Link><a href="https://gaskiller.xyz">Gas Killer</a></nav></div></footer>
           </div>
         </HashRouter>
         </ToastProvider>

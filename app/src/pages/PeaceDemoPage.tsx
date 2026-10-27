@@ -83,7 +83,7 @@ export function PeaceDemoPage() {
             <OutLink href={demo.rulesUrl}>Open the original market rules</OutLink>
             <div className="mp-info-box mp-margin-top"><Info size={18} aria-hidden="true" /><p>The source policy was fixed after the signed emails, so this is retrospective. Independent timestamps for the official announcement and original market close were not established; the replay does not prove that evidence arrived before that close.</p></div>
             <details className="mp-details"><summary>Rule commitment</summary><code>{demo.ruleHash}</code></details>
-            <div className="mp-inline-cta"><div><strong>Have a different question?</strong><p>Draft new rules with DeepSeek inside the product, then review them.</p></div><Link className="mp-button secondary" to="/create/ai">Draft rules <ArrowRight size={16} aria-hidden="true" /></Link></div>
+            <div className="mp-inline-cta"><div><strong>Have a different question?</strong><p>Create a market on Gnosis that settles from signed newspaper alerts.</p></div><Link className="mp-button secondary" to="/create">Create a market <ArrowRight size={16} aria-hidden="true" /></Link></div>
           </>}
           {tab === "Verification" && <>
             <h2>What was actually verified</h2><p className="mp-leading">A historical local replay. The records below do not describe a public-network market transaction.</p>
@@ -98,7 +98,7 @@ export function PeaceDemoPage() {
 
       <aside className="mp-resolution-sidebar" aria-label="Recorded market outcome">
         <div className="mp-resolution-card"><p className="mp-eyebrow">Final result · local replay</p><div className="mp-final-result"><CheckCircle size={34} weight="fill" aria-hidden="true" /><strong>YES</strong></div><h2>An individual laureate</h2><p>Recorded outcome from the October 21 replay.</p><div className="mp-sidebar-facts"><span>Evidence reviewed<strong>4 sources</strong></span><span>Rules origin<strong>Polymarket</strong></span><span>Public market settlement<strong>Not completed</strong></span></div><button className="mp-button full" onClick={() => showTab("Evidence")}>Inspect the evidence <ArrowRight size={16} aria-hidden="true" /></button><p className="mp-caption">This replay has no trading or redemption controls. Model scores are not market prices.</p></div>
-        <div className="mp-sidebar-note"><p className="mp-eyebrow">Build your own question</p><h3>Start with rules people can read.</h3><Link to="/create/ai" className="mp-text-link">Draft with DeepSeek <ArrowRight size={15} aria-hidden="true" /></Link></div>
+        <div className="mp-sidebar-note"><p className="mp-eyebrow">Build your own question</p><h3>Start with rules people can read.</h3><Link to="/create" className="mp-text-link">Create a market <ArrowRight size={15} aria-hidden="true" /></Link></div>
       </aside>
     </div>
   </div>;

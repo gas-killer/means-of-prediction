@@ -16,12 +16,10 @@
     "sync:gnosis": "DEPLOYMENT=gnosis node scripts/sync-contracts.mjs",
     "build:gnosis": "DEPLOYMENT=gnosis node scripts/sync-contracts.mjs && tsc -b && vite build",
     "test:fees": "node --experimental-strip-types --test tests/fees.test.mjs",
-    "test:compute-demos": "node --experimental-strip-types --test scripts/compute-demos.test.mjs",
-    "test:rule-studio": "node --experimental-strip-types --test scripts/rule-studio.test.mjs"
+    "test:compute-demos": "node --experimental-strip-types --test scripts/compute-demos.test.mjs"
   },
   "dependencies": {
     "@breadcoop/ui": "^2.0.4",
-    "@mlc-ai/web-llm": "0.2.84",
     "@phosphor-icons/react": "^2.1.7",
     "@tanstack/react-query": "^5.62.0",
     "circomlib": "^2.0.5",

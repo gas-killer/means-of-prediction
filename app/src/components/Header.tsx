@@ -59,8 +59,8 @@ export function Header() {
           <NavLink to="/markets" className={navClass}>
             Markets
           </NavLink>
-          <NavLink to="/create/ai" className={navClass}>
-            Draft rules
+          <NavLink to="/create" className={navClass}>
+            Create
           </NavLink>
           <NavLink to="/demo/peace-2026" className={navClass}>
             Market replay
@@ -68,7 +68,7 @@ export function Header() {
           <NavLink to="/demos" className={navClass}>
             Compute demos
           </NavLink>
-          <details className="mp-more-nav"><summary aria-label="More navigation">More ▾</summary><div><NavLink to="/create" onClick={event => event.currentTarget.closest("details")?.removeAttribute("open")}>On-chain markets</NavLink><NavLink to="/portfolio" onClick={event => event.currentTarget.closest("details")?.removeAttribute("open")}>Portfolio</NavLink></div></details>
+          <details className="mp-more-nav"><summary aria-label="More navigation">More ▾</summary><div><NavLink to="/portfolio" onClick={event => event.currentTarget.closest("details")?.removeAttribute("open")}>Portfolio</NavLink></div></details>
         </nav>
 
         {showWallet && <div className="mp-wallet-strip">

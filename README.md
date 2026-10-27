@@ -5,10 +5,6 @@
 The current frontend adds a Google Alerts research flow alongside the existing
 DKIM market contracts:
 
-- [Rule Studio](https://ronturetzky.github.io/means-of-prediction/#/create/ai)
-  generates structured rules with DeepSeek, supports review and editing, and saves
-  an exportable alert plan with a SHA-256 commitment. Generation uses a protected
-  server API; saving a plan does not create alerts or deploy a market.
 - [The Nobel Peace market replay](https://ronturetzky.github.io/means-of-prediction/#/demo/peace-2026)
   presents a recorded local YES outcome, imported Polymarket rules, four evidence
   excerpts, model support scores and the local receipt. It is not a public-chain
@@ -16,8 +12,7 @@ DKIM market contracts:
 - [The Sepolia computation demo](https://ronturetzky.github.io/means-of-prediction/#/demos)
   separately verifies the completed Laya × GasKiller arithmetic component.
 
-See [the frontend flow and deployment notes](docs/FRONTEND-ALERTS-FLOW.md) and
-[the private rule-generation API setup](services/rule-generator/README.md).
+See [the frontend flow and deployment notes](docs/FRONTEND-ALERTS-FLOW.md).
 
 The existing binary prediction contracts use real RSA-SHA256 DKIM verification of
 newspaper alert emails. Their original interface lets anyone permissionlessly:
@@ -68,8 +63,7 @@ Run `cd app && pnpm test:compute-demos` for the reader checks.
 bundle that auto-indexes the deployment from
 `contracts/deployments/gnosis.json`, reads markets live from Gnosis, and connects an
 injected wallet to trade/settle. Rebuilt + redeployed by `.github/workflows/pages.yml`
-on every matching push. Rule Studio uses the separate authenticated Worker API;
-the legacy on-chain market reader and trading controls still run in the browser.
+on every matching push. The on-chain market reader and trading controls run in the browser.
 
 
 Deployed 2026-08-21, **all contracts verified** on [gnosisscan.io](https://gnosisscan.io) (Blockscout):

@@ -8,7 +8,6 @@ import { NEWSPAPERS } from "../data/newspapers";
 import { tokensForChain, type TokenInfo } from "../data/tokens";
 import { CHAIN_ID } from "../config";
 import { KeywordBuilder, phrasesToRegex, regexToPhrases } from "../components/KeywordBuilder";
-import { AIRegexPanel } from "../components/AIRegexPanel";
 import { withCategoryTag } from "../data/categories";
 import { ContentField, FACTORY, USDC, useCash, useFactoryFees } from "../hooks/useMarkets";
 import { formatFeePercent, parseFeePercent, validateTradingFees } from "../lib/fees";
@@ -41,7 +40,7 @@ export function CreatePage() {
     { ...NEWSPAPERS[1], contentRegex: "" },
   ]);
   const [threshold, setThreshold] = useState(2);
-  const [regexMode, setRegexMode] = useState<"simple" | "advanced" | "ai">("simple");
+  const [regexMode, setRegexMode] = useState<"simple" | "advanced">("simple");
   const [phrases, setPhrases] = useState<string[]>([]);
   const [contentRegex, setContentRegex] = useState("");
   const [contentField, setContentField] = useState<ContentField>(ContentField.SubjectOrBody);
@@ -65,7 +64,7 @@ export function CreatePage() {
     setPhrases(next);
     setContentRegex(phrasesToRegex(next));
   };
-  const switchMode = (mode: "simple" | "advanced" | "ai") => {
+  const switchMode = (mode: "simple" | "advanced") => {
     if (mode === "simple") {
       // best-effort: recover phrases from a simple alternation pattern
       const recovered = regexToPhrases(contentRegex);
@@ -347,15 +346,6 @@ export function CreatePage() {
               >
                 Advanced (regex)
               </button>
-              <button
-                data-testid="mode-ai"
-                onClick={() => switchMode("ai")}
-                className={`flex-1 px-3 py-2 font-breadDisplay font-bold uppercase ${
-                  regexMode === "ai" ? "bg-surface-ink text-paper-0" : "bg-paper-0"
-                }`}
-              >
-                AI (describe it)
-              </button>
             </div>
 
             {regexMode === "simple" ? (
@@ -368,8 +358,6 @@ export function CreatePage() {
                   </p>
                 )}
               </>
-            ) : regexMode === "ai" ? (
-              <AIRegexPanel currentRegex={contentRegex} onGenerated={setContentRegex} />
             ) : (
               <div>
                 <label className="text-caption font-bold uppercase text-surface-grey-2">Content regex</label>

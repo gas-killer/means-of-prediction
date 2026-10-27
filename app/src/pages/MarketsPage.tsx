@@ -50,8 +50,8 @@ export function MarketsPage() {
             signed alert email. <Link to="/" className="font-semibold text-core-orange underline">How it works →</Link>
           </p>
         </div>
-        <Link to="/create/ai">
-          <Button data-testid="nav-create">Draft rules with DeepSeek</Button>
+        <Link to="/create">
+          <Button data-testid="nav-create">Create a market</Button>
         </Link>
       </div>
 
