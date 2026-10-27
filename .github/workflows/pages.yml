@@ -11,6 +11,7 @@ on:
       - "contracts/src/**"
       - "contracts/deployments/gnosis.json"
       - "contracts/deployments/sepolia.json"
+      - "docs/dkim-keys-public.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
